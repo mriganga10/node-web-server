@@ -19,7 +19,7 @@ app.use((req,res,next) => {
 	fs.appendFile('server.log',log+'\n');
 	next();
 });
-app.use((req,res,next) => {
+/*app.use((req,res,next) => {
 	var now = new Date().toString();
 	var log = `${now}: ${req.method} ${req.url}`;
 	console.log(log);
@@ -27,8 +27,14 @@ app.use((req,res,next) => {
 	res.render('maintainance.hbs',{
 		message:'page undermaintainance',
 	});
-});
+});*/
 app.use(express.static(__dirname+'/public'));
+app.get('/project',(req,res) => {
+	res.render('project.hbs',{
+		pageTitle:'project page',
+		welcomeMessage: 'Welcome to project page',
+	});
+});
 app.get('/',(req,res) => {
 	//res.send('Hello Express!');
 	/* res.send({
